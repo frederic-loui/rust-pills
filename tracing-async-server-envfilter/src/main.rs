@@ -117,6 +117,7 @@ async fn socket_server(tx: Sender<u32>) {
     }
 }
 
+#[instrument(target = "protocol", name = "ospf")]
 async fn ospf(pid: usize) {
     let mut counter: u64 = 0;
     info!(name: "ospf", target:"protocol", pid, "ENTERING OSPF ...");
@@ -131,6 +132,7 @@ async fn ospf(pid: usize) {
     info!(name: "ospf", target:"protocol", pid, "EXITING OSPF ...");
 }
 
+#[instrument(target = "protocol", name = "bgp")]
 async fn bgp(pid: usize) {
     let mut counter: u64 = 0;
     info!(name: "bgp", target:"protocol",pid, "ENTERING BGP ...");
@@ -144,3 +146,4 @@ async fn bgp(pid: usize) {
     }
     info!(name: "bgp", target: "protocol", pid,"EXITING BGP ...");
 }
+
